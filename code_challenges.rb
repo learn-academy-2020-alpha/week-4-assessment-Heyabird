@@ -2,6 +2,12 @@
 
 # --------------------1) Create a method that takes in an array and returns an array with only odd numbers sorted from least to greatest.
 
+def oddlyOrdered (array)
+    newArr = []
+    newArr << array.select { |n| n.is_a?(Fixnum)}
+    return newArr
+    # (array).sort { |a, b| a <=> b }
+end
 
 
 
@@ -11,19 +17,55 @@ fullArr1 = [4, 9, 0, '7', 8, true, 'hey', 7, 199, -9, false, 'hola']
 fullArr2 = ['hello', 7, 23, -823, false, 78, nil, '67', 6, 'Number']
 # Expected output: [-823, 7, 23]
 
+puts(oddlyOrdered(fullArr1))
+
+p "------------------------------------------------------------"
 
 # --------------------2) Create a class called Bike that is initialized with a model, wheels, and a frame size. The default number of wheels is 2. Create a get_info method that returns a sentence with all the data from the bike object.
 
+class Bike 
+    def initialize model, wheels=2, frame_size
+        @model = model
+        @wheels = wheels
+        @frame_size = frame_size
+        @speed = 0
+    end
+
+    def ring_the_bell
+        puts "SKRRRT!"
+    end
+
+    def speed
+        @speed
+    end 
+
+    def pedal_faster x
+        @speed += x
+    end
+
+    def brake x
+       if  @speed - x > 0
+            @speed -= x
+       else 
+            @speed = 0
+       end
+    end
+
+    def get_info
+        puts "The #{@model} bike has #{@wheels} wheels and a #{@frame_size}cm frame." 
+    end
+end
 
 
-
+bike1 = Bike.new 'Trek', 4, 168
+bike1.get_info
 
 # Expected output example: 'The Trek bike has 2 wheels and a 168cm frame.'
 
 
 # -------------------3) Add a bell to the bike class and create a method that will ring the bell when the method is called.
 
-
+bike1.ring_the_bell
 
 
 
@@ -32,7 +74,7 @@ fullArr2 = ['hello', 7, 23, -823, false, 78, nil, '67', 6, 'Number']
 
 # -------------------4) Add a speedometer to the Bike class. The speed should be initialized at 0.
 
-
+p bike1.speed
 
 
 
@@ -42,7 +84,8 @@ fullArr2 = ['hello', 7, 23, -823, false, 78, nil, '67', 6, 'Number']
 # -------------------5) Add the ability to pedal faster and brake. The pedal_faster method should increase the speed. The brake method should decrease the speed. The bike cannot go negative speeds.
 
 
-
+p bike1.pedal_faster 10
+p bike1.brake 15
 
 
 # Expected output example: my_bike.pedal_faster 10 => 10
