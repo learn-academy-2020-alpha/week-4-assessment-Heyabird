@@ -3,12 +3,12 @@
 # --------------------1) Create a method that takes in an array and returns an array with only odd numbers sorted from least to greatest.
 
 def oddlyOrdered (array)
-    newArr = []
-    newArr << array.select { |n| n.is_a?(Fixnum)}
-    return newArr
-    # (array).sort { |a, b| a <=> b }
-end
+    array.select! { |n| n.is_a?(Fixnum)}
+    array.select! { |n| n%2==1 }
+    array.sort!
+    return array
 
+end
 
 
 
@@ -17,7 +17,9 @@ fullArr1 = [4, 9, 0, '7', 8, true, 'hey', 7, 199, -9, false, 'hola']
 fullArr2 = ['hello', 7, 23, -823, false, 78, nil, '67', 6, 'Number']
 # Expected output: [-823, 7, 23]
 
-puts(oddlyOrdered(fullArr1))
+print (oddlyOrdered(fullArr1))
+print (oddlyOrdered(fullArr2))
+
 
 p "------------------------------------------------------------"
 
